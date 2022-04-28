@@ -7,7 +7,6 @@
   */
 
 var coeff = 1000 * 60 * 10; // every 10 min
-var wait = 5; // BOM image isn't available straight away so wait 5 min.
 var timeout = 500; // frame change every 3 secs
 var frameCount = 10; // 6 instances of images shown on bom site
 var run = true;
@@ -18,7 +17,8 @@ L.TileLayer.bomRadar = L.TileLayer.extend({
 	options: {
     //maxNativeZoom: 10,
 		//baseUrl: "https://api.weather.bom.gov.au/v1/rainradar/tiles/{time}/{z}/{x}/{y}.png",
-		attribution: 'Weather from <a href="https://weather.bom.gov.au/">BOM</a>'
+		attribution: 'Weather from <a href="https://weather.bom.gov.au/">BOM</a>',
+    id: "bom"
 	},
   onAdd: function(map) {
 
@@ -51,7 +51,7 @@ L.TileLayer.bomRadar = L.TileLayer.extend({
 
     function getRadarTime(i) {
       var x = 1;
-      if (Number(new Date().getUTCMinutes().toString().slice(-1)) <= 5) { // BOM image isn't available straight away so wait 5 min. delay
+      if (Number(new Date().getUTCMinutes().toString().slice(-1)) <= 5) { // BOM image isn't available straight away so wait 5 min.
         //console.log(Number(new Date().getUTCMinutes().toString().slice(-1)));
         //console.log("x=0");
         x = 0;
