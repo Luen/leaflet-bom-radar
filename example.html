@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaflet BOM Radar</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="./leaflet.bom.js"></script>
+</head>
+
+<body>
+    <div id="map" style="height: 100vh;"></div>
+
+    <script>
+        // Insert the updated JavaScript code here
+
+        document.addEventListener("DOMContentLoaded", function () {
+            // Initialize the map
+            const map = L.map('map').setView([-25.2744, 133.7751], 5); // Centered on Australia
+
+            // Add OpenStreetMap as the base layer
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 19,
+                attribution: 'Map data © <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
+            }).addTo(map);
+
+            // Add BOM Radar as an overlay
+            L.tileLayer.bomradar(map).addTo(map);
+        });
+    </script>
+</body>
+
+</html>
